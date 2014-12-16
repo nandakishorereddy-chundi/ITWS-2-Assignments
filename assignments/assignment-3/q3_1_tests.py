@@ -1,0 +1,158 @@
+#!/usr/bin/python
+from q3_1 import *
+
+if __name__ == "__main__" :
+		l=DoublyLinkedList()
+		l.insert(1,1)
+		l.insert(2,2)
+		l.insert(3,3)
+		l.insert(4,4)
+		
+		assert(l.length()==4)
+		""" No assertion error beacause length of the list is 4 as there are four nodes in the list"""
+		
+		l.deleteLast()
+		assert(l.tail.key==3)
+		""" No assertion error because tail is modified, it points to a node whose key is 3 """
+		
+		assert(l.length()==3)
+		""" Again no assertion error because deletion of a node leads decrement in length"""
+		
+		assert(l.head.key==1)
+		""" No assertion error because head points to first node with key equal to 1"""
+		
+		try:
+			assert(l.tail.key==4)
+			""" There will be an assertion error because node with key 4 has been deleted so tail points 
+			    to a node which has key equal to 3"""
+		except(AssertionError):
+			pass
+		
+		assert(l.find(2)==2)
+		""" No assertion error because node with key 2 has value also 2"""
+		
+		try:
+			assert(l.find(4)==4)
+			""" There will be an assertionerror because node with key 4 is not there"""
+		except(AssertionError):
+			pass
+		
+		l.insert(4,4)
+		
+		assert(l.find(4)==4)
+		""" This time no assertion error beacuse node with key 4 is inserted"""
+		
+		try:
+			assert(l.length()==3)
+			""" We get an assertion error because after inserting 4 length becomes equal to 4"""
+		except(AssertionError):
+			pass
+		
+		assert(l.length()==4)
+		""" No assertion error as mentioned above """
+		
+		l.deleteFirst()
+		
+		try:
+			assert(l.head.val==1)
+			""" Assertion error because 1st element is deleted"""
+		except(AssertionError):
+			pass
+		
+		assert(l.head.val==2)
+		""" No assertion error because after deleting 1st node head points to next node which has val=2"""
+		
+		assert(l.length()==3)
+		""" 1st length was 4.After that operations performed are deleteLast,insert,deleteFirst so again
+		    it leads length to be equal to 3"""
+		
+		l.insert(5,5)
+		l.insert(6,6)
+		
+		assert(l.find(7)==None)
+		""" As node with key as 7 is not there"""
+		
+		l.delete(4)
+		
+		assert(l.length()==4)
+		""" No assertion error because length is 4"""
+		
+		assert(l.head.key==2)
+		""" No assertion error because head still points to 1st node which has key as 2"""
+		
+		l.delete(6)
+		
+		try:
+			assert(l.tail.key==6)
+			""" Assertion error because last node has key 6,but it is deleted so tail pointer changes"""
+		except(AssertionError):
+			pass
+		
+		assert(l.tail.key==5)
+		""" As tail points to a node which has key as 5"""
+
+		assert(l.head.key==2)
+
+		l.delete(2)
+
+		assert(l.head.key==3)
+		""" Previously head.key is 2 now head.key is 3 because deleted node is starting node so head modifies"""
+
+		assert(l.length()==2)
+		""" No assertion error because of 3 deletions"""
+
+		l.delete(3)
+
+		assert(l.head.key==5)
+		""" No assertion error because again deleted node is starting node"""
+
+		assert(l.head.key==l.tail.key==5)
+		""" No assertion error because only single node is present and both head and tail pointers are pointing
+		    same node"""
+
+		l.delete(5)
+
+		assert(l.length()==0)
+		""" Because list became empty,as we deleted all nodes"""
+
+		""" Again inserting all nodes"""
+		l.insert(1,1)
+		l.insert(2,2)
+		l.insert(3,3)
+
+		""" Again we can start assertion with the newly created list"""
+
+		""" because we newly created 5 nodes"""
+
+		"""checking deleteFirst() method"""
+		assert(l.length()==3)
+		l.deleteFirst()
+		l.deleteFirst()
+		l.deleteFirst()
+		assert(l.length()==0)
+		""" As we deleted all nodes"""
+
+		"""Again inserting all nodes"""
+		assert(l.length()==0)
+		l.insert(5,5)
+		l.insert(6,6)
+		l.insert(7,7)
+		assert(l.length()==3)
+		""" because created 3 nodes"""
+
+		"""checking deleteLast() method"""
+		l.deleteLast()
+		l.deleteLast()
+		l.deleteLast()
+		assert(l.length()==0)
+		""" because again we deleted all 3 nodes"""
+
+		assert(l.length()==0)
+		l.insert(1,1)
+		l.insert(2,2)
+		l.insert(3,3)
+		l.insert(4,4)
+		l.insert(5,5)
+		assert(l.length()==5)
+
+#		                               Testing all methods completed       
